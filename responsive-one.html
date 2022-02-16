@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px auto;
+        width: 1100px;
+        background-color: black;
+        margin: auto;
+        padding: 15px;
+    }
+    .brand a{
+        text-decoration: none;
+        color: white;
+        font-size: 1.2rem;
+    }
+    @keyframes show {
+        0%{
+            transform: translateY(-160px);
+        }
+        100%{
+            transform: translateY(0);
+        }
+    }
+    .m-btn{
+        display: none;
+        padding: 12px;  
+        border: none;
+        /* border-radius: 50%; */
+    }
+    .m-btn:focus{
+        outline: none;
+    }
+    /* .nav-item{
+
+    } */
+    .nav-list{
+        padding: 0px;
+    }
+    .nav-list li{
+        display: inline-block;
+        list-style-type: none;
+
+    }
+    .nav-a{
+        text-decoration: none;
+        color: white;
+        padding: 12px;
+        display: inline-block;
+        width: 80px;
+        text-align: center;
+    }
+   
+   
+    @media screen and (max-width:480px){
+        header{
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .m-btn{
+            display: block;
+        }
+        .nav-item{
+            display: none;
+            width: 100%;
+        }
+        .nav-list li{
+            display: block;
+            background-color: rgb(39, 39, 39);
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .nav-a{
+        text-decoration: none;
+        color: white;
+        padding: 6px;
+        width: 100%;
+    }
+    }
+    .show-nav{
+        display: block;
+        animation: show 0.8s linear;
+        position: absolute;
+        right: 0;
+        top: 68px;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.534);
+        padding: 10px;
+    }
+</style>
+<body>
+    <header>
+        <div class="brand">
+            <a href="#">Moon</a>
+        </div>
+        <button class="m-btn">M</button>
+        <nav class="nav-item">
+            <ul class="nav-list">
+                <li>
+                    <a class="nav-a" href="#">Home</a>
+                </li>
+                <li>
+                    <a class="nav-a" href="#">About</a>
+                </li>
+                <li>
+                    <a class="nav-a" href="#">Service</a>
+                </li>
+                <li>
+                    <a class="nav-a" href="#">Contact</a>
+                </li>
+                <li>
+                    <a class="nav-a" href="#">Gallery</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+</body>
+<script>
+    let nav = document.querySelector(".nav-item");
+    document.querySelector(".m-btn").addEventListener("click",function(){
+        nav.classList.toggle("show-nav");
+    });
+</script>
+</html>
