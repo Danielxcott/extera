@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .news{
+    margin: 40px auto;
+    /* height: 500px; */
+    columns: 3 100px ;
+    column-gap: 15px;
+    column-fill: balance;
+    width: 80%;
+    vertical-align: top;
+    /* height: 100vh; */
+  }
+  .scr{
+    overflow-y: scroll;
+    height: 400px;
+
+  }
+  .box{
+    width: 85%;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+  }
+  .box-img{
+    width: 100%;
+    border-radius: 12px;
+    padding: 5px;
+  }
+  .box-h{
+    padding: 5px;
+  }
+  .author{
+    text-decoration: underline;
+    padding: 5px;
+    font-size: 20px;
+  }
+  .description{
+    text-align: justify;
+    text-overflow: ellipsis;
+    padding: 5px;
+  }
+  .btn{
+    padding: 30px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .readmore{
+    background-color: #FFFFFF;
+  border: 0;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #111827;
+  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  }
+  .readmore:hover {
+  background-color: rgb(138, 138, 138);
+}
+
+.readmore:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.readmore:focus-visible {
+  box-shadow: none;
+}
+</style>
+<body>
+    <div class="news">
+       
+    </div>
+</body>
+<script src="api.js"></script>
+<script>
+  let n = document.querySelector(".news");
+  let d = data.articles;
+  d.forEach(function(el,index){
+    n.innerHTML += `
+    <div class="scr box">
+          <img class="box-img"src="${el.urlToImage}" alt="">
+          <h4 class="box-h">${el.title}</h4>
+          <strong class="author">${el.author}</strong>
+          <p class="description">${el.description}</p>
+          <div class="btn">
+          <a href="${el.url}" class="readmore">Readmore</a>
+              </div>
+        </div>
+    `
+  })
+</script>
+</html>
