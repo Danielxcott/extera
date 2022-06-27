@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gallery</title>
+    <link rel="stylesheet" href="node_modules/feather-icons-web/feather.css">
+</head>
+<style>
+    #upload{
+        display: none;
+    }
+    #uploader{
+        width: 900px;
+        padding: 20px;
+        background-color: rgba(185, 185, 185, 0.596);
+        display: flex;
+        justify-content: center;
+        margin: 10px auto;
+        border-radius: 12px;
+    }
+    .feather-upload{
+        font-size: 35px;
+    }
+    #gallery{
+        columns: 3 250px;
+        column-gap: 15px;
+        width: 900px;
+        margin: 10px auto;
+    }
+    .gallery-img{
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 12px;
+    }
+</style>
+<body>
+    <div id="uploader">
+            <i class="feather-upload"></i>
+    </div>
+    <input type="file" id="upload" multiple>
+    <div id="gallery">
+    </div>
+</body>
+<script>
+    let upload = document.getElementById("upload");
+    let uploader = document.getElementById("uploader");
+    let view = document.getElementById("preview");
+    let gallery = document.getElementById("gallery");
+        function addtogallery(src){
+            let img = new Image();
+            img.src= src;
+            img.classList = "gallery-img";
+            gallery.appendChild(img)
+        }
+    uploader.addEventListener("click",function(){
+        upload.click();
+    })
+
+    upload.addEventListener("change",function(){
+        let photo = this.files;
+
+        for(let i=0;i<photo.length;i++){
+            const reader = new FileReader();
+        reader.addEventListener("load",function(){
+             addtogallery(reader.result);
+        });
+        reader.readAsDataURL(photo[i]);
+        }
+        
+
+    })
+</script>
+</html>
